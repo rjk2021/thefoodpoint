@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Order</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Bootstrap Icons -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .menu-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-controls button {
+            font-size: 1.2rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            border: 1px solid #007bff;
+            color: #007bff;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .quantity-controls button:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .quantity-controls input {
+            width: 50px;
+            text-align: center;
+        }
+
+        .add-item-btn {
+            font-size: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .trash-icon {
+            color: #dc3545;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .trash-icon:hover {
+            color: #a71d2a;
+        }
+
+        .place-order-btn {
+            width: 100%;
+        }
+
+        @media (max-width: 576px) {
+            .menu-card {
+                padding: 0.8rem;
+            }
+
+            .quantity-controls button {
+                font-size: 1rem;
+                width: 2rem;
+                height: 2rem;
+            }
+
+            .quantity-controls input {
+                width: 40px;
+            }
+        }
+        .back-to-menu-container {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-to-menu-btn {
+      padding: 10px 20px;
+      background-color: #ffc107;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div class="back-to-menu-container">
+        <button class="back-to-menu-btn" onclick="window.location.href='index.html';">Back to Menu</button>
+      </div>
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Order Your Meal</h1>
+
+        <div id="menuItems">
+            <!-- Cards will be dynamically added here -->
+        </div>
+
+        <button class="btn btn-success place-order-btn mt-3" id="placeOrder">Place Order</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const menuOptions = `
+             <option value="kadai-paneer">Kadai Paneer (F ₹150 | H ₹80)</option>
+            <option value="Labaddar-Paneer">Labaddar Paneer (F ₹170 | H ₹90)</option>
+            <option value="Bhurji-Paneer">Bhurji Paneer(F ₹199 | H ₹99)</option>
+            <option value="Sahi-Paneer">Sahi Paneer(F ₹170 | H ₹90)</option>
+            <option value="Butter-Masala-Paneer">Butter Masala Paneer(F ₹170 | H ₹90)</option>
+            <option value="Matar-Paneer">Matar Paneer (F ₹160 | H ₹85)</option>
+            <option value="Litti-Chokha">Litti Chokha (F ₹90 | H ₹50)</option>
+            <option value="Sattu-Paratha">Sattu Paratha (₹80 - 2 pcs)</option>
+            <option value="Rajama-Chawal">Rajama Chawal(₹90)</option>
+            <option value="Kadhi-Chawal">Kadhi Chawal(₹90)</option>
+            <option value="Dal-Chawal">Dal Chawal(₹90)</option>
+            <option value="Dal-Delight-Platter">Dal Delight Platter(₹95)</option>
+            <option value="Royal-Paneer-Platter">Royal Paneer Platter(₹110)</option>
+     
+     
+            <option value="Dal-Tadka">Dal Tadka (F ₹120 | H ₹60)/option>
+            <option value="Chhole">Chhole (F ₹120 | H ₹60)</option>
+            <option value="Rajama">Rajama (F ₹120 | H ₹60)</option>
+            <option value="Kadhi-Pakoda">Kadhi Pakoda (F ₹120 | H ₹60)</option>
+            <option value="Dal-Makhani">Dal Makhani (F ₹150 | H ₹80)</option>
+            <option value="Paneer-Fried-Rice">Paneer Fried Rice (F ₹120 | H ₹70)</option>
+            <option value="Seasonal-Sabji">Seasonal Sabji (F ₹80 | H ₹45)</option>
+            <option value="Roti">Roti (₹10 - 1 pcs)</option>
+            <option value="Allo-Paratha(2 pcs)">Allo Paratha (₹75 - 2 pcs )</option>
+            <option value="Sattu-Paratha(2 pcs)">Sattu Paratha (₹80 - 2 pcs)</option>
+            <option value="Paneer-Paratha(2 pcs)">Paneer Paratha (₹90 - 2 pcs)</option>
+        `;
+
+        const noPortionItems = ["roti", "paratha",'chawal','platter'];
+
+        function createMenuCard() {
+            const menuCard = $(`
+                <div class="menu-card">
+                    <div class="mb-3">
+                        <label for="item" class="form-label">Item</label>
+                        <select class="form-select item">
+                            <option value="none" selected>Choose Item...</option>
+                            ${menuOptions}
+                        </select>
+                    </div>
+                    <div class="mb-3 portion-container">
+                        <label for="portion" class="form-label">Portion</label>
+                        <select class="form-select portion">
+                            <option value="none" selected>Choose Portion...</option>
+                            <option value="half">Half</option>
+                            <option value="full">Full</option>
+                        </select>
+                    </div>
+                    <div class="quantity-controls mb-3">
+                        <button class="decrease btn btn-outline-primary">&#8722;</button>
+                        <input type="number" class="form-control quantity" value="1" min="1" readonly>
+                        <button class="increase btn btn-outline-primary">&#43;</button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <i class="trash-icon bi bi-trash" title="Remove"></i>
+                        <button class="btn btn-primary add-item-btn" title="Add New Item">+</button>
+                    </div>
+                </div>
+            `);
+
+            menuCard.find('.item').on('change', function () {
+                const selectedItem = $(this).val().toLowerCase();
+                if (noPortionItems.some(item => selectedItem.includes(item))) {
+                    menuCard.find('.portion-container').hide();
+                } else {
+                    menuCard.find('.portion-container').show();
+                }
+            });
+
+            menuCard.find('.increase').on('click', function () {
+                const quantity = menuCard.find('.quantity');
+                quantity.val(parseInt(quantity.val()) + 1);
+            });
+
+            menuCard.find('.decrease').on('click', function () {
+                const quantity = menuCard.find('.quantity');
+                if (parseInt(quantity.val()) > 1) {
+                    quantity.val(parseInt(quantity.val()) - 1);
+                }
+            });
+
+            menuCard.find('.trash-icon').on('click', function () {
+                menuCard.remove();
+                updateVisibility();
+            });
+
+            menuCard.find('.add-item-btn').on('click', function () {
+                $('#menuItems').append(createMenuCard());
+                updateVisibility();
+            });
+
+            return menuCard;
+        }
+
+        function updateVisibility() {
+            const menuCards = $('.menu-card');
+            if (menuCards.length === 1) {
+                $('.trash-icon').hide(); // Hide trash icon if only 1 card
+            } else {
+                $('.trash-icon').show(); // Show trash icon if more than 1 card
+            }
+
+            $('.add-item-btn').hide(); // Hide all add buttons
+            $('.menu-card:last-child .add-item-btn').show(); // Show only on last card
+        }
+
+        $('#menuItems').append(createMenuCard());
+        updateVisibility();
+
+        $('#placeOrder').on('click', function () {
+            const menuItems = $('.menu-card');
+            let orderDetails = "Hello, I want to order:\n";
+            let validOrder = false;
+
+            menuItems.each(function () {
+                const itemName = $(this).find('.item').val();
+                var portion = $(this).find('.portion').val();
+                const quantity = $(this).find('.quantity').val();
+
+                if(portion==null || portion=='none'){
+
+                    portion='';
+                }
+
+                if (itemName !== "none" && parseInt(quantity) > 0) {
+                    const portionText = noPortionItems.some(item => itemName.toLowerCase().includes(item)) ? "" : ` (${portion})`;
+                    orderDetails += `- ${itemName}${portionText} x ${quantity}\n`;
+                    validOrder = true;
+                }
+            });
+
+            if (!validOrder) {
+                alert("Please add at least one valid item to your order.");
+                return;
+            }
+
+            const whatsappLink = `https://wa.me/9588384016?text=${encodeURIComponent(orderDetails)}`;
+            window.open(whatsappLink, '_blank');
+        });
+    </script>
+</body>
+</html>

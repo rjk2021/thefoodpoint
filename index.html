@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>The Food Point</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <!-- <link href="assets/img/favicon.png" rel="icon"> -->
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Yummy
+  * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <style>
+    @media (max-width: 768px) {
+  .popup-overlay {
+    width: 90%;
+    height: auto;
+    top: 10%;
+    left: 5%;
+  }
+}
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">The Food Point</h1>
+        <span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home<br></a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About</a></li>
+   
+          <!-- <li><a href="#events">Events</a></li>
+          <li><a href="#chefs">Chefs</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li> -->
+          <li><a href="#dailyMeal">Daily Meal</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <!-- <a class="btn-getstarted" href="https://wa.link/rzts4y" >Order Now</a> -->
+      <!-- <a href="/ordernow.html" class="btn-get-started">Order Now!</a> -->
+      <!-- <button id="orderNowButton" style="margin: 20px; padding: 10px 20px; background: #2ca72a; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Order Now</button> -->
+
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- <div style="background-color: #ffcc00; padding: 15px; text-align: center; font-family: Arial, sans-serif; border-radius: 5px;">
+      <h2 style="color: #d32f2f;">📢 Important Announcement 📢</h2>
+      <p style="font-size: 18px; color: #333;">
+          Dear Customers,  
+          <br><br>
+          <strong>The Food Point (FSSAI: 20824005002667)</strong> will be 
+          <span style="color: #d32f2f;"><strong>temporarily closed from 28th March to 1st April</strong></span>.
+          Our services will <strong>resume from 2nd April onwards</strong>.
+      </p>
+      <p style="font-size: 16px; color: #333;">
+          For any inquiries, contact us at: <strong>📞 9588384016</strong>  
+        
+      </p>
+      <p style="font-weight: bold; color: #d32f2f;">We appreciate your understanding and look forward to serving you again soon! 😊</p>
+  </div> -->
+  
+    <!-- Hero Section -->
+    <section id="hero" class="hero section light-background">
+
+      <div class="container">
+
+        <div class="row gy-4 justify-content-center justify-content-lg-between">
+          <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h1 data-aos="fade-up">100% Veg Delicious & hygienic</h1>
+            <p data-aos="fade-up" data-aos-delay="100"><strong>FSSAI License No:</strong> 20824005002667</p>
+            <!-- <p >Order now and pick up your meal at your convenience!</p> -->
+            <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+              <!-- <button id="orderNowButton" style="margin: 20px; padding: 10px 20px; background: #2ca72a; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Order Now</button> -->
+              <!-- <button id="orderNowButton2" style="margin: 20px; padding: 10px 20px; background: #2ca72a; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Order Now</button> -->
+              <a  href="/ordernow.html" class="btn-get-started">Order Now!</a>
+              <!-- <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
+            </div>
+          </div>
+          <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+            <!-- <img src="assets/img/hero-img.png" class="img-fluid animated" alt=""> -->
+            <!-- <img src="assets/img/menu/litti-home.png" class="img-fluid animated" alt=""> -->
+            <!-- <img src="assets/img/hero1-img.png"" class="img-fluid animated" alt=""> -->
+            <img src="assets/img/hero1-img.png"" class="img-fluid animated" alt="">
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+      <!-- Menu Section -->
+      <section id="menu" class="menu section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Our Menu</h2>
+          <p><span>Check Our</span> <span class="description-title">Yummy Menu</span></p>
+        </div><!-- End Section Title -->
+  
+        <div class="container">
+  
+          <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+  
+            <li class="nav-item">
+              <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#paneerItems">
+                <h4>Paneer Lover's Paradise </h4>
+              </a>
+            </li><!-- End tab nav item -->
+  
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#biharBites">
+                <h4>Signature Bihar Bites</h4>
+              </a><!-- End tab nav item -->
+  
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#comfortCombos">
+                <h4>Comfort Combos</h4>
+              </a>
+            </li><!-- End tab nav item -->
+  
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#soulfulDelights">
+                <h4>Soulful Delights</h4>
+              </a>
+            </li><!-- End tab nav item -->
+  
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#stuffedDelights">
+                <h4>Stuffed Delights</h4>
+              </a>
+            </li><!-- End tab nav item -->
+  
+  
+            
+          </ul>
+  
+          <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+  
+            <div class="tab-pane fade active show" id="paneerItems">
+  
+              <div class="tab-header text-center">
+                <p>Menu</p>
+                <h3>Paneer Lover's Paradise</h3>
+              </div>
+  
+              <div class="row gy-5">
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/kadai-paneer.png"glightbox"><img src="assets/img/menu/kadai-paneer.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Kadai Paneer</h4>
+                  <p class="ingredients">
+                    A flavorful paneer dish cooked with freshly ground spices and bell peppers.
+                  </p>
+                  <p class="price">
+                    F ₹150 | H ₹80
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/paneer-labaddar.png" class="glightbox"><img src="assets/img/menu/paneer-labaddar.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Labaddar Paneer</h4>
+                  <p class="ingredients">
+                    Paneer cubes in a rich and creamy tomato-based gravy with butter.
+                  </p>
+                  <p class="price">
+                    F ₹160 | H ₹85
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/paneer-bhurji.png" class="glightbox"><img src="assets/img/menu/paneer-bhurji.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Bhurji Paneer</h4>
+                  <p class="ingredients">
+                    Scrambled paneer sautéed with onions, tomatoes, and aromatic spices.
+                  </p>
+                  <p class="price">
+                    F ₹180 | H ₹95
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/paneer-sahi.png" class="glightbox"><img src="assets/img/menu/paneer-sahi.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Sahi Paneer</h4>
+                  <p class="ingredients">
+                    Savor the creamy and rich flavors of our Sahi Paneer, cooked to perfection in a royal blend of spices!
+                  </p>
+                  <p class="price">
+                    F ₹170 | H ₹90
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/paneer-b-masala.png" class="glightbox"><img src="assets/img/menu/paneer-b-masala.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Butter Masala Paneer</h4>
+                  <p class="ingredients">
+                    Relish the velvety texture of our Paneer Butter Masala, simmered in a buttery tomato gravy with authentic spices!
+                  </p>
+                  <p class="price">
+                    F ₹170 | H ₹90
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/matar-paneer.png" class="glightbox"><img src="assets/img/menu/matar-paneer.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Matar Paneer</h4>
+                  <p class="ingredients">
+                    Delight in the perfect combination of soft paneer and sweet peas, cooked in a flavorful, spiced gravy!
+                  </p>
+                  <p class="price">
+                    F ₹160 | H ₹85
+                  </p>
+                </div><!-- Menu Item -->
+  
+              </div>
+            </div><!-- End Starter Menu Content -->
+  
+            <div class="tab-pane fade" id="biharBites">
+  
+              <div class="tab-header text-center">
+                <p>Menu</p>
+                <h3>Signature Bihar Bites</h3>
+              </div>
+  
+              <div class="row gy-5">
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/liiti-chokha.png" class="glightbox"><img src="assets/img/menu/liiti-chokha.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Litti Chokha</h4>
+                  <p class="ingredients">
+                    Savor the authentic taste of Litti Chokha – roasted wheat balls filled with spiced sattu, served with a flavorful brinjal and tomato mash.
+                  </p>
+                  <p class="price">
+                     ₹90(4 pcs) 
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/sattu-paratha.png" class="glightbox"><img src="assets/img/menu/sattu-paratha.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Sattu Paratha </h4>
+                  <p class="ingredients">
+                    Relish the wholesome goodness of Sattu Paratha – soft whole wheat flatbreads stuffed with spiced roasted gram flour, served with fresh chutney and curd for a satisfying meal
+                  </p>
+                  <p class="price">
+                    ₹80(2 pcs)
+                  </p>
+                </div><!-- Menu Item -->
+  
+             
+  
+               
+              </div>
+            </div><!-- End Breakfast Menu Content -->
+  
+            <div class="tab-pane fade" id="comfortCombos">
+  
+              <div class="tab-header text-center">
+                <p>Menu</p>
+                <h3>Comfort Combos</h3>
+              </div>
+  
+              <div class="row gy-5">
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/rajama-chawal.png" class="glightbox"><img src="assets/img/menu/rajama-chawal.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Rajama Chawal</h4>
+                  <p class="ingredients">
+                    Enjoy the classic comfort of Rajma Chawal – hearty red kidney beans cooked in a flavorful spiced gravy, served over steamed rice for a perfect meal
+                  </p>
+                  <p class="price">
+                    ₹90
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/Kadhi Chawal.png" class="glightbox"><img src="assets/img/menu/Kadhi Chawal.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Kadhi Chawal</h4>
+                  <p class="ingredients">
+                    Savor the tangy and flavorful Kadhi Pakoda Chawal – creamy yogurt-based curry with spiced gram flour fritters, paired perfectly with steamed rice
+                  </p>
+                  <p class="price">
+                    ₹90
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/dal-chawal.png" class="glightbox"><img src="assets/img/menu/dal-chawal.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Dal Chawal</h4>
+                  <p class="ingredients">
+                    Delight in the simplicity of Dal Tadka Chawal – aromatic lentils tempered with ghee and spices, served with fluffy steamed rice for a comforting meal
+                  </p>
+                  <p class="price">
+                    ₹90
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/dal-rotis-thali.png" class="glightbox"><img src="assets/img/menu/dal-rotis-thali.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Dal Delight Platter</h4>
+                  <p class="ingredients">
+                    Indulge in our wholesome thali featuring 4 soft rotis served with desi ghee, a flavorful vegetable sabji, and comforting Dal Tadka – a complete meal packed with nutrition and taste
+                  </p>
+                  <p class="price">
+                    ₹95
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/paneer-roti.png" class="glightbox"><img src="assets/img/menu/paneer-roti.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Royal Paneer Platter</h4>
+                  <p class="ingredients">
+                    Enjoy the perfect combination of 4 soft rotis served with desi ghee, paired with flavorful Kadai Paneer and cooling raita – a deliciously satisfying thali for every craving.
+                  </p>
+                  <p class="price">
+                    ₹120
+                  </p>
+                </div><!-- Menu Item -->
+  
+  
+              </div>
+            </div><!-- End Lunch Menu Content -->
+  
+            <div class="tab-pane fade" id="soulfulDelights">
+  
+              <div class="tab-header text-center">
+                <p>Menu</p>
+                <h3>Soulful Delights</h3>
+              </div>
+  
+              <div class="row gy-5">
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/dal-tadka.png" class="glightbox"><img src="assets/img/menu/dal-tadka.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Dal  Tadka</h4>
+                  <p class="ingredients">
+                   
+                  </p>
+                  <p class="price">
+                    F ₹120 | H ₹60
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/Chhole.png" class="glightbox"><img src="assets/img/menu/Chhole.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Chhole</h4>
+                  <p class="ingredients">
+                 
+                  </p>
+                  <p class="price">
+                    F ₹120 | H ₹60
+                  </p>
+                </div><!-- Menu Item -->
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/Rajama.png" class="glightbox"><img src="assets/img/menu/Rajama.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Rajama</h4>
+                  <p class="ingredients">
+                 
+                  </p>
+                  <p class="price">
+                    F ₹120 | H ₹60
+                  </p>
+                </div><!-- Menu Item -->
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/kadhi-pakoda.png" class="glightbox"><img src="assets/img/menu/kadhi-pakoda.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Kadhi Pakoda</h4>
+                  <p class="ingredients">
+                 
+                  </p>
+                  <p class="price">
+                    F ₹120 | H ₹60
+                  </p>
+                </div><!-- Menu Item -->
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/dal-makhani.png" class="glightbox"><img src="assets/img/menu/dal-makhani.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Dal Makhani</h4>
+                  <p class="ingredients">
+                 
+                  </p>
+                  <p class="price">
+                    F ₹150 | H ₹80
+                  </p>
+                </div><!-- Menu Item -->
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/paneer-fried-rice.png" class="glightbox"><img src="assets/img/menu/paneer-fried-rice.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Paneer Fried Rice</h4>
+                  <p class="ingredients">
+                 
+                  </p>
+                  <p class="price">
+                    F ₹120 | H ₹70
+                  </p>
+                </div><!-- Menu Item -->
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/seasonal-sbji.png" class="glightbox"><img src="assets/img/menu/seasonal-sbji.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Seasonal Sabji</h4>
+                  <p class="ingredients">
+                 
+                  </p>
+                  <p class="price">
+                    F ₹120 | H ₹60
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/jeera-rice.png" class="glightbox"><img src="assets/img/menu/jeera-rice.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Jeera  Rice</h4>
+                  <p class="ingredients">
+                 
+                  </p>
+                  <p class="price">
+                    F ₹80 | H ₹45
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/fulka-roti.png" class="glightbox"><img src="assets/img/menu/fulka-roti.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Roti</h4>
+                  <p class="ingredients">
+                 
+                  </p>
+                  <p class="price">
+                   ₹10 (1 pc)
+                  </p>
+                </div><!-- Menu Item -->
+  
+             
+  
+              </div>
+            </div><!-- End Dinner Menu Content -->
+  
+            <div class="tab-pane fade" id="stuffedDelights">
+  
+              <div class="tab-header text-center">
+                <p>Menu</p>
+                <h3>Stuffed Delights</h3>
+              </div>
+  
+              <div class="row gy-5">
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/Alloo-paratha.png" class="glightbox"><img src="assets/img/menu/Alloo-paratha.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Allo Paratha(2 pcs)</h4>
+                  <p class="ingredients">
+                   
+                  </p>
+                  <p class="price">
+                  ₹75
+                  </p>
+                </div><!-- Menu Item -->
+  
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/sattu-paratha.png" class="glightbox"><img src="assets/img/menu/sattu-paratha.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Sattu Paratha(2 pcs)</h4>
+                  <p class="ingredients">
+                   
+                  </p>
+                  <p class="price">
+                  ₹80
+                  </p>
+                </div><!-- Menu Item -->
+                <div class="col-lg-4 menu-item">
+                  <a href="assets/img/menu/Paneer-paratha.png" class="glightbox"><img src="assets/img/menu/Paneer-paratha.png" class="menu-img img-fluid" alt=""></a>
+                  <h4>Paneer Paratha(2 pcs)</h4>
+                  <p class="ingredients">
+                 
+                  </p>
+                  <p class="price">
+                     ₹90
+                  </p>
+                </div><!-- Menu Item -->
+               
+             
+  
+              </div>
+            </div><!-- End Dinner Menu Content -->
+          </div>
+  
+        </div>
+  
+      </section><!-- /Menu Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About Us<br></h2>
+        <p><span>Learn More</span> <span class="description-title">About Us</span></p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <!-- <img src="assets/img/about.jpg" class="img-fluid mb-4" alt=""> -->
+            <div class="book-a-table">
+              <h3>Order call us </h3>
+              <p>+91 95883 84016</p>
+            </div>
+          </div>
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="250">
+            <div class="content ps-0 ps-lg-5">
+              <p class="fst-italic">
+                Experience the taste of tradition with our freshly prepared, 100% vegetarian meals. From wholesome combos to signature dishes, we serve food that feels like home!
+              </p>
+              <ul>
+                <li><i class="bi bi-check-circle-fill"></i> <span>100% Vegetarian: We take pride in serving pure, vegetarian meals prepared with the finest ingredients</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Authentic Flavors: Our dishes are crafted with traditional recipes, bringing you the taste of home.</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Affordable & Fresh: Enjoy delicious, freshly made food at unbeatable prices.</span></li>
+              </ul>
+              <p>
+                FSSAI Approved: Your health and satisfaction are our top priorities!
+              </p>
+
+              <div class="position-relative mt-4">
+                <!-- <img src="assets/img/about-2.jpg" class="img-fluid" alt=""> -->
+                <!-- <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Why Us Section -->
+
+    <!-- /Why Us Section -->
+
+    <!-- Stats Section -->
+  
+    <!-- /Stats Section -->
+
+  
+
+    <!-- Testimonials Section -->
+   <!-- /Testimonials Section -->
+
+    <!-- Events Section -->
+   <!-- /Events Section -->
+
+ 
+
+        <!-- About Section -->
+        <section id="dailyMeal" class="about section">
+
+          <!-- Section Title -->
+          <div class="container section-title" data-aos="fade-up">
+            <h2>Daily Meal Packages at Affordable Prices – Convenient, Nutritious & Delicious!<br></h2>
+         
+          </div><!-- End Section Title -->
+    
+          <div class="container">
+    
+            <div class="row gy-12">
+          
+              <div class="col-lg-12" data-aos="fade-up" data-aos-delay="250">
+                <div class="content ps-0 ps-lg-12">
+                  <p class="fst-italic">
+                    Our daily meal packages are designed to fit your busy lifestyle while keeping you energized and satisfied. Enjoy fresh, wholesome meals every day at affordable rates, including:
+                  </p>
+                  <ul>
+                    <li><i class="bi bi-check-circle-fill"></i> <span>Lunch & Dinner Combos: Choose from a variety of options like Rice with Kadhi, Rajma, Dal Tadka, or Roti with Dal and Sabji.</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i> <span>Specialty Meals: Opt for hearty dishes like Parathas with desi ghee, or Rice Paneer Fried.</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i> <span>Customized Meals: Tailored to your preferences, with options for vegetarian delights and seasonal dishes.</span></li>
+                  </ul>
+                  <p>
+                    For more details on pricing and to customize your meal plan, call us at +91-9588384016 or place your order on WhatsApp here. Order now and pick up your meal at your convenience!
+                  </p>
+    
+                
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    
+        </section><!-- /About Section -->
+    <!-- Book A Table Section -->
+   <!-- /Book A Table Section -->
+
+    <!-- Gallery Section -->
+ <!-- /Gallery Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p><span>Need Help?</span> <span class="description-title">Contact Us</span></p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="mb-5">
+          <!-- <iframe style="width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen=""></iframe> -->
+          <iframe style="width: 100%; height: 400px;"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.5995395990917!2d77.06961250093661!3d28.255941419784676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d255c19a1b747%3A0x78d03f328b97b663!2sThe%20Food%20Point%20(Abha&#39;s%20Kitchen)!5e0!3m2!1sen!2sin!4v1734970877491!5m2!1sen!2sin&z=18"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+        
+        </div><!-- End Google Maps -->
+
+        <div class="row gy-4">
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
+              <i class="icon bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h3>Address</h3>
+                <p>J402, Our Homes 3 , Sohna Sector 6 Gurgaon-122103</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
+              <i class="icon bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>+91 95883 84016</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
+              <i class="icon bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p>info@thefoodpoint.com</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
+              <i class="icon bi bi-clock flex-shrink-0"></i>
+              <div>
+                <h3>Opening Hours<br></h3>
+                <!-- <p><strong>Daily:</strong> 9AM - 21PM; <strong>Sunday:</strong> Closed</p> -->
+                <p><strong>Daily:</strong> 9AM - 21PM</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+       
+        
+        
+        <!-- End Contact Form -->
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div class="address">
+            <h4>Address</h4>
+            J402, Our Homes 3 , Sohna Sector 6 Gurgaon-122103
+            <p></p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Contact</h4>
+            <p>
+              <strong>Phone:</strong> <span>+91 9588384016</span><br>
+              <strong>Email:</strong> <span>info@thefoodpoint.com</span><br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <h4>Opening Hours</h4>
+            <p>
+              <strong>Daily:</strong> <span>9AM - 21PM</span><br>
+              <!-- <strong>Sunday</strong>: <span>Closed</span> -->
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4>Follow Us</h4>
+          <div class="social-links d-flex">
+            <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">The Food Point</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a> -->
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

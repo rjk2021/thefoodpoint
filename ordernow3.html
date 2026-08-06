@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .cart-container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .cart-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .cart-item .delete-item {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 16px;
+      color: #ff4d4d;
+      cursor: pointer;
+    }
+    label {
+      font-size: 14px;
+      color: #333;
+    }
+    select, input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .quantity-control button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .quantity-control input {
+      width: 50px;
+      text-align: center;
+    }
+    .add-item-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .place-order-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+    .back-to-menu-container {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-to-menu-btn {
+      padding: 10px 20px;
+      background-color: #ffc107;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <div class="back-to-menu-container">
+        <button class="back-to-menu-btn" onclick="window.location.href='index.html';">Back to Menu</button>
+      </div>
+<div class="cart-container">
+  <!-- Cart Item -->
+  <div class="cart-item">
+    <div class="delete-item" onclick="removeItem(this)">🗑️</div>
+    <label for="menuItem">Item</label>
+    <select class="menu-item">
+        <option value="" disabled selected>Choose Item</option>
+            <option value="kadai-paneer">Kadai Paneer (F ₹150 | H ₹80)</option>
+            <option value="Labaddar-Paneer">Labaddar Paneer (F ₹170 | H ₹90)</option>
+            <option value="Bhurji-Paneer">Bhurji Paneer(F ₹199 | H ₹99)</option>
+            <option value="Sahi-Paneer">Sahi Paneer(F ₹170 | H ₹90)</option>
+            <option value="Butter-Masala-Paneer">Butter Masala Paneer(F ₹170 | H ₹90)</option>
+            <option value="Matar-Paneer">Matar Paneer (F ₹160 | H ₹85)</option>
+            <option value="Litti-Chokha">Litti Chokha (F ₹90 | H ₹50)</option>
+            <option value="Sattu-Paratha">Sattu Paratha (₹80 - 2 pcs)</option>
+            <option value="Rajama-Chawal">Rajama Chawal(₹90)</option>
+            <option value="Kadhi-Chawal">Kadhi Chawal(₹90)</option>
+            <option value="Dal-Chawal">Dal Chawal(₹90)</option>
+            <option value="Dal-Delight-Platter">Dal Delight Platter(₹95)</option>
+            <option value="Royal-Paneer-Platter">Royal Paneer Platter(₹110)</option>
+            <option value="Dal-Delight-Platter">Dal Delight Platter(₹95)</option>
+            <option value="Dal-Delight-Platter">Dal Delight Platter(₹95)</option>
+            <option value="Dal-Tadka">Dal Tadka (F ₹120 | H ₹60)/option>
+            <option value="Chhole">Chhole (F ₹120 | H ₹60)</option>
+            <option value="Rajama">Rajama (F ₹120 | H ₹60)</option>
+            <option value="Kadhi-Pakoda">Kadhi Pakoda (F ₹120 | H ₹60)</option>
+            <option value="Dal-Makhani">Dal Makhani (F ₹150 | H ₹80)</option>
+            <option value="Paneer-Fried-Rice">Paneer Fried Rice (F ₹120 | H ₹70)</option>
+            <option value="Seasonal-Sabji">Seasonal Sabji (F ₹80 | H ₹45)</option>
+            <option value="Roti">Roti (₹10 - 1 pcs)</option>
+            <option value="Allo-Paratha(2 pcs)">Allo Paratha (₹75 - 2 pcs )</option>
+            <option value="Sattu-Paratha(2 pcs)">Sattu Paratha (₹80 - 2 pcs)</option>
+            <option value="Paneer-Paratha(2 pcs)">Paneer Paratha (₹90 - 2 pcs)</option>
+    </select>
+    <label for="portion">Portion</label>
+    <select class="portion">
+      <option value="Full">Full</option>
+      <option value="Half">Half</option>
+    </select>
+    <label>Quantity</label>
+    <div class="quantity-control">
+      <button onclick="decreaseQuantity(this)">-</button>
+      <input type="number" value="1" min="1" class="quantity">
+      <button onclick="increaseQuantity(this)">+</button>
+    </div>
+  </div>
+
+  <!-- Add New Item Button -->
+  <button class="add-item-btn" onclick="addNewItem()">Add New Item</button>
+
+  <!-- Place Order Button -->
+  <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+</div>
+
+<script>
+ function addNewItem() {
+  const container = document.querySelector('.cart-container');
+  const newItem = document.querySelector('.cart-item').cloneNode(true);
+
+  // Reset values for the new item
+  newItem.querySelector('.menu-item').value = "";
+  newItem.querySelector('.portion').value = "Full";
+  newItem.querySelector('.quantity').value = 1;
+
+  // Append new item to the container
+  container.insertBefore(newItem, document.querySelector('.add-item-btn'));
+
+  // Show delete buttons only if there are multiple items
+  toggleDeleteButtons();
+}
+
+function removeItem(button) {
+  const item = button.closest('.cart-item');
+  item.remove();
+
+  // Hide delete buttons if there's only one item left
+  toggleDeleteButtons();
+}
+
+function increaseQuantity(button) {
+
+  debugger;
+//  const input = button.nextElementSibling;
+  const qty =document.getElementsByClassName('quantity')[0].value;//  $('.quantity').val();
+  document.getElementsByClassName('quantity')[0].value= parseInt(qty)+1;
+  // quantityElement.textContent = parseInt(quantityElement.textContent) + 1;
+  // input.value = parseInt(input.value) + 1;
+}
+
+function decreaseQuantity(button) {
+  const qty =document.getElementsByClassName('quantity')[0].value;//  $('.quantity').val();
+  document.getElementsByClassName('quantity')[0].value= parseInt(qty)+1;
+  if (parseInt(qty) > 1) {
+    document.getElementsByClassName('quantity')[0].value= parseInt(qty)-1;
+  }
+}
+
+function toggleDeleteButtons() {
+  const items = document.querySelectorAll('.cart-item');
+  const deleteButtons = document.querySelectorAll('.delete-item');
+
+  if (items.length === 1) {
+    deleteButtons.forEach(button => button.style.display = 'none');
+  } else {
+    deleteButtons.forEach(button => button.style.display = 'block');
+  }
+}
+
+function placeOrder() {
+  const cartItems = document.querySelectorAll('.cart-item');
+  const orderDetails = [];
+  //let orderDetails = "Order Details:\n";
+
+  cartItems.forEach((item, index) => {
+    const menuItem = item.querySelector('.menu-item').value;
+    const portion = item.querySelector('.portion').value;
+    const quantity = item.querySelector('.quantity').value;
+
+    if (menuItem) {
+     // orderDetails += `${index + 1}. ${menuItem} - ${portion} - Qty: ${quantity}\n`;
+      orderDetails.push(`${menuItem} (${portion}) x${quantity}`);
+    }
+  });
+
+  if (orderDetails.length === 0) {
+    alert("Please add items to your cart before placing the order.");
+    return;
+  }
+  const orderText = `Hi, I would like to order:\n\n${orderDetails.join("\n")}`;
+  // Encode the order details for the WhatsApp URL
+  const encodedDetails = encodeURIComponent(orderText);
+  const whatsappUrl = `https://wa.me/919588384016?text=${encodedDetails}`;
+
+  // Redirect to WhatsApp
+  window.open(whatsappUrl, "_blank");
+}
+
+// Initial call to hide delete button if there's only one item
+document.addEventListener('DOMContentLoaded', toggleDeleteButtons);
+
+</script>
+
+</body>
+</html>

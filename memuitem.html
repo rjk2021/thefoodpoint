@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Food Point - Menu</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff8f0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .menu-container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: green;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    .order-btn {
+      background-color: green;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .order-btn:hover {
+      background-color: darkgreen;
+    }
+
+    select, input[type="number"] {
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    @media(max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      td {
+        border: none;
+        border-bottom: 1px solid #ccc;
+        padding: 10px 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-container">
+    <h1>🍽️ The Food Point Menu</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Portion</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="menu-body">
+        <!-- Dynamic Menu Rows -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const phone = "919588384016"; // WhatsApp number (country code + number)
+
+    const menuItems = [
+      { name: "Litti Chokha", full: 90, half: null },
+      { name: "Kadai Paneer", full: 150, half: 80 },
+      { name: "Mix Veg", full: 150, half: 80 },
+      { name: "Bhurji Paneer", full: 180, half: 95 },
+      { name: "Labadar Paneer", full: 160, half: 85 },
+      { name: "Butter Masala Paneer", full: 160, half: 85 },
+      { name: "Rajma", full: 120, half: 60 },
+      { name: "Kadhi Pakoda", full: 100, half: 55 },
+      { name: "Dal Tadaka", full: 120, half: 60 },
+      { name: "Dal Makhani", full: 150, half: 75 },
+      { name: "Seasonal Sabji", full: 120, half: 60 },
+      { name: "Paneer Fried Rice", full: 120, half: 70 },
+      { name: "Jeera Rice", full: 80, half: 45 },
+    ];
+
+    $(document).ready(function () {
+      menuItems.forEach((item, index) => {
+        const halfOption = item.half !== null
+          ? `<option value="half">Half (₹${item.half})</option>`
+          : '';
+        const row = `
+          <tr>
+            <td>${item.name}</td>
+            <td>
+              <select class="portion" data-index="${index}">
+                <option value="full">Full (₹${item.full})</option>
+                ${halfOption}
+              </select>
+            </td>
+            <td class="price" data-index="${index}">₹${item.full}</td>
+            <td><input type="number" min="1" value="1" class="quantity" data-index="${index}"></td>
+            <td><button class="order-btn" data-index="${index}">Order Now</button></td>
+          </tr>
+        `;
+        $('#menu-body').append(row);
+      });
+
+      // Update price based on portion selected
+      $('.portion').on('change', function () {
+        const index = $(this).data('index');
+        const portion = $(this).val();
+        const item = menuItems[index];
+        const price = portion === 'full' ? item.full : item.half;
+        $(`.price[data-index="${index}"]`).text(`₹${price}`);
+      });
+
+      // WhatsApp Order
+      $('.order-btn').on('click', function () {
+        const index = $(this).data('index');
+        const item = menuItems[index];
+        const portion = $(`.portion[data-index="${index}"]`).val();
+        const qty = $(`.quantity[data-index="${index}"]`).val();
+        const price = portion === 'full' ? item.full : item.half;
+        const itemName = item.name + (portion === 'half' ? " (Half)" : " (Full)");
+        const message = `Hi, I would like to order:\n*${itemName}* x${qty}\nTotal: ₹${price * qty}`;
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+      });
+    });
+  </script>
+
+</body>
+</html>

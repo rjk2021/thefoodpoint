@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +53,7 @@
 
 
         .billing-card {
-            max-width: 900px;
+            max-width: 950px;
             margin: 30px auto;
         }
 
@@ -75,6 +75,7 @@
         .table th {
             background-color: #198754;
             color: white;
+            white-space: nowrap;
         }
 
 
@@ -87,6 +88,34 @@
 
         .currency {
             font-weight: bold;
+            white-space: nowrap;
+        }
+
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+
+        @media (max-width: 576px) {
+
+            .header {
+                padding: 20px 10px;
+            }
+
+
+            .header h2 {
+                font-size: 22px;
+            }
+
+
+            .total-amount {
+                font-size: 24px;
+            }
+
         }
 
     </style>
@@ -97,15 +126,21 @@
 <body>
 
 
-<!-- ==========================================
+<!-- =========================================
      HEADER
-========================================== -->
+========================================= -->
 
 <div class="header">
 
-    <h2>The Food Point</h2>
+    <h2>
+        The Food Point
+    </h2>
 
-    <p>Daily Food & Meal Packages</p>
+
+    <p>
+        Daily Food & Meal Packages
+    </p>
+
 
     <p>
         FSSAI Approved |
@@ -127,9 +162,9 @@
 <div class="container billing-card">
 
 
-    <!-- ==========================================
-         BILL INFORMATION
-    =========================================== -->
+    <!-- =========================================
+         CUSTOMER INFORMATION
+    ========================================== -->
 
     <div class="card shadow-sm mb-4">
 
@@ -142,6 +177,8 @@
 
             <div class="row">
 
+
+                <!-- Customer Name -->
 
                 <div class="col-md-6 mb-3">
 
@@ -159,6 +196,8 @@
                 </div>
 
 
+                <!-- Bill Date -->
+
                 <div class="col-md-6 mb-3">
 
                     <label class="form-label">
@@ -171,8 +210,11 @@
                         class="form-control"
                     >
 
-                </div>
+                    <small class="text-muted">
+                        This is the date of the bill. Each item below has its own date.
+                    </small>
 
+                </div>
 
             </div>
 
@@ -182,9 +224,9 @@
 
 
 
-    <!-- ==========================================
+    <!-- =========================================
          ADD ITEM
-    =========================================== -->
+    ========================================== -->
 
     <div class="card shadow-sm mb-4">
 
@@ -198,7 +240,26 @@
             <div class="row align-items-end">
 
 
-                <div class="col-md-7 mb-3">
+                <!-- ITEM DATE -->
+
+                <div class="col-md-3 mb-3">
+
+                    <label class="form-label">
+                        Item Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="itemDate"
+                        class="form-control"
+                    >
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="col-md-5 mb-3">
 
                     <label class="form-label">
                         Description
@@ -214,8 +275,9 @@
                 </div>
 
 
+                <!-- PRICE -->
 
-                <div class="col-md-3 mb-3">
+                <div class="col-md-2 mb-3">
 
                     <label class="form-label">
                         Price (₹)
@@ -233,6 +295,7 @@
                 </div>
 
 
+                <!-- ADD BUTTON -->
 
                 <div class="col-md-2 mb-3">
 
@@ -246,8 +309,12 @@
 
                 </div>
 
-
             </div>
+
+
+            <small class="text-muted">
+                Enter the actual date for each item. Dates do not have to be consecutive.
+            </small>
 
         </div>
 
@@ -255,9 +322,9 @@
 
 
 
-    <!-- ==========================================
-         ITEMS LIST
-    =========================================== -->
+    <!-- =========================================
+         ITEMS TABLE
+    ========================================== -->
 
     <div class="card shadow-sm mb-4">
 
@@ -278,19 +345,19 @@
 
                         <tr>
 
-                            <th style="width: 60px;">
-                                #
+                            <th style="width: 130px;">
+                                Date
                             </th>
 
                             <th>
                                 Description
                             </th>
 
-                            <th style="width: 150px;">
+                            <th style="width: 130px;">
                                 Price
                             </th>
 
-                            <th style="width: 180px;">
+                            <th style="width: 170px;">
                                 Action
                             </th>
 
@@ -321,9 +388,9 @@
 
 
 
-    <!-- ==========================================
+    <!-- =========================================
          TOTAL
-    =========================================== -->
+    ========================================== -->
 
     <div class="total-box shadow-sm mb-4">
 
@@ -355,39 +422,41 @@
 
 
 
-    <!-- ==========================================
-         BUTTONS
-    =========================================== -->
+    <!-- =========================================
+         ACTION BUTTONS
+    ========================================== -->
 
     <div class="text-center mb-5">
 
-<button
-    type="button"
-    class="btn btn-primary btn-lg me-2"
-    onclick="downloadBill()"
->
-    ⬇ Download Bill
-</button>
+        <button
+            type="button"
+            id="downloadButton"
+            class="btn btn-primary btn-lg me-2 mb-2"
+            onclick="downloadBill()"
+        >
+            ⬇ Download Bill
+        </button>
 
-<button
-    type="button"
-    class="btn btn-success btn-lg me-2"
-    onclick="copyBill()"
->
-    📋 Copy Bill
-</button>
 
-<button
-    type="button"
-    class="btn btn-outline-danger btn-lg"
-    onclick="clearBill()"
->
-    Clear Bill
-</button>
+        <button
+            type="button"
+            id="copyButton"
+            class="btn btn-success btn-lg me-2 mb-2"
+            onclick="copyBill()"
+        >
+            📋 Copy Bill
+        </button>
 
+
+        <button
+            type="button"
+            class="btn btn-outline-danger btn-lg mb-2"
+            onclick="clearBill()"
+        >
+            Clear Bill
+        </button>
 
     </div>
-
 
 </div>
 
@@ -396,28 +465,49 @@
 <script>
 
 
-/* ==========================================
+/* =========================================
    BILL ITEMS
-========================================== */
+========================================= */
 
 let items = [];
 
 
 
-/* ==========================================
-   TODAY'S DATE
-========================================== */
+/* =========================================
+   SET BILL DATE
+
+   This is only the bill date.
+========================================= */
 
 document.getElementById("billDate").value =
     new Date().toISOString().split("T")[0];
 
 
 
-/* ==========================================
+/* =========================================
+   ITEM DATE
+
+   User can manually change this
+   for every item.
+========================================= */
+
+document.getElementById("itemDate").value =
+    new Date().toISOString().split("T")[0];
+
+
+
+/* =========================================
    ADD ITEM
-========================================== */
+========================================= */
 
 function addItem() {
+
+
+    const date =
+        document
+            .getElementById("itemDate")
+            .value;
+
 
     const description =
         document
@@ -428,29 +518,63 @@ function addItem() {
 
     const price =
         parseFloat(
-            document.getElementById("itemPrice").value
+            document
+                .getElementById("itemPrice")
+                .value
         );
 
 
+
+    /* DATE VALIDATION */
+
+    if (date === "") {
+
+        alert(
+            "Please select the item date."
+        );
+
+        return;
+
+    }
+
+
+
+    /* DESCRIPTION VALIDATION */
+
     if (description === "") {
 
-        alert("Please enter item description.");
+        alert(
+            "Please enter item description."
+        );
 
         return;
 
     }
 
 
-    if (isNaN(price) || price < 0) {
 
-        alert("Please enter a valid price.");
+    /* PRICE VALIDATION */
+
+    if (
+        isNaN(price) ||
+        price < 0
+    ) {
+
+        alert(
+            "Please enter a valid price."
+        );
 
         return;
 
     }
 
+
+
+    /* ADD ITEM */
 
     items.push({
+
+        date: date,
 
         description: description,
 
@@ -459,14 +583,31 @@ function addItem() {
     });
 
 
+
+    /* CLEAR DESCRIPTION */
+
     document.getElementById(
         "itemDescription"
     ).value = "";
 
 
+
+    /* CLEAR PRICE */
+
     document.getElementById(
         "itemPrice"
     ).value = "";
+
+
+
+    /* DO NOT CHANGE ITEM DATE */
+
+    /*
+       We intentionally keep the selected
+       date so you can add multiple items
+       for the same date quickly.
+    */
+
 
 
     displayItems();
@@ -475,80 +616,107 @@ function addItem() {
 
 
 
-/* ==========================================
+/* =========================================
    DISPLAY ITEMS
-========================================== */
+========================================= */
 
 function displayItems() {
 
+
     const table =
-        document.getElementById("itemsTable");
+        document.getElementById(
+            "itemsTable"
+        );
 
 
     const emptyMessage =
-        document.getElementById("emptyMessage");
+        document.getElementById(
+            "emptyMessage"
+        );
 
 
     table.innerHTML = "";
 
 
+
     if (items.length === 0) {
 
-        emptyMessage.style.display = "block";
+        emptyMessage.style.display =
+            "block";
 
-    } else {
+    }
 
-        emptyMessage.style.display = "none";
+    else {
+
+        emptyMessage.style.display =
+            "none";
 
     }
 
 
-    items.forEach((item, index) => {
+
+    items.forEach(
+        (item, index) => {
 
 
-        const row =
-            document.createElement("tr");
+            const row =
+                document.createElement(
+                    "tr"
+                );
 
 
-        row.innerHTML = `
 
-            <td>
-                ${index + 1}
-            </td>
+            row.innerHTML = `
 
-            <td>
-                ${escapeHtml(item.description)}
-            </td>
-
-            <td class="currency">
-                ₹${item.price.toFixed(2)}
-            </td>
-
-            <td>
-
-                <button
-                    class="btn btn-sm btn-warning me-1"
-                    onclick="editItem(${index})"
-                >
-                    Edit
-                </button>
+                <td>
+                    ${formatDate(item.date)}
+                </td>
 
 
-                <button
-                    class="btn btn-sm btn-danger"
-                    onclick="deleteItem(${index})"
-                >
-                    Delete
-                </button>
-
-            </td>
-
-        `;
+                <td>
+                    ${escapeHtml(
+                        item.description
+                    )}
+                </td>
 
 
-        table.appendChild(row);
+                <td class="currency">
+                    ₹${item.price.toFixed(2)}
+                </td>
 
-    });
+
+                <td>
+
+                    <div class="action-buttons">
+
+                        <button
+                            class="btn btn-sm btn-warning"
+                            onclick="editItem(${index})"
+                        >
+                            Edit
+                        </button>
+
+
+                        <button
+                            class="btn btn-sm btn-danger"
+                            onclick="deleteItem(${index})"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                </td>
+
+            `;
+
+
+
+            table.appendChild(row);
+
+        }
+    );
+
 
 
     calculateTotal();
@@ -557,16 +725,54 @@ function displayItems() {
 
 
 
-/* ==========================================
+/* =========================================
+   FORMAT DATE
+========================================= */
+
+function formatDate(dateString) {
+
+
+    if (!dateString) {
+
+        return "";
+
+    }
+
+
+    const date =
+        new Date(
+            dateString + "T00:00:00"
+        );
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+
+/* =========================================
    ESCAPE HTML
-========================================== */
+========================================= */
 
 function escapeHtml(text) {
 
+
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     div.textContent = text;
+
 
     return div.innerHTML;
 
@@ -574,14 +780,36 @@ function escapeHtml(text) {
 
 
 
-/* ==========================================
+/* =========================================
    EDIT ITEM
-========================================== */
+========================================= */
 
 function editItem(index) {
 
-    const item = items[index];
 
+    const item =
+        items[index];
+
+
+
+    /* DATE */
+
+    const newDate =
+        prompt(
+            "Enter item date (YYYY-MM-DD):",
+            item.date
+        );
+
+
+    if (newDate === null) {
+
+        return;
+
+    }
+
+
+
+    /* DESCRIPTION */
 
     const newDescription =
         prompt(
@@ -597,6 +825,9 @@ function editItem(index) {
     }
 
 
+
+    /* PRICE */
+
     const newPrice =
         prompt(
             "Enter price:",
@@ -611,11 +842,18 @@ function editItem(index) {
     }
 
 
-    const price =
-        parseFloat(newPrice);
 
+    const price =
+        parseFloat(
+            newPrice
+        );
+
+
+
+    /* VALIDATION */
 
     if (
+        newDate.trim() === "" ||
         newDescription.trim() === "" ||
         isNaN(price) ||
         price < 0
@@ -630,14 +868,22 @@ function editItem(index) {
     }
 
 
+
+    /* UPDATE */
+
     items[index] = {
+
+        date:
+            newDate.trim(),
 
         description:
             newDescription.trim(),
 
-        price: price
+        price:
+            price
 
     };
+
 
 
     displayItems();
@@ -646,11 +892,12 @@ function editItem(index) {
 
 
 
-/* ==========================================
+/* =========================================
    DELETE ITEM
-========================================== */
+========================================= */
 
 function deleteItem(index) {
+
 
     if (
         confirm(
@@ -658,7 +905,12 @@ function deleteItem(index) {
         )
     ) {
 
-        items.splice(index, 1);
+
+        items.splice(
+            index,
+            1
+        );
+
 
         displayItems();
 
@@ -668,42 +920,50 @@ function deleteItem(index) {
 
 
 
-/* ==========================================
+/* =========================================
    CALCULATE TOTAL
-========================================== */
+========================================= */
 
 function calculateTotal() {
+
 
     let total = 0;
 
 
-    items.forEach(item => {
+    items.forEach(
+        item => {
 
-        total += item.price;
+            total += item.price;
 
-    });
+        }
+    );
 
 
     document.getElementById(
         "totalAmount"
     ).innerText =
-        "₹" + total.toFixed(2);
+        "₹" +
+        total.toFixed(2);
 
 }
 
 
 
-/* ==========================================
+/* =========================================
    CLEAR BILL
-========================================== */
+========================================= */
 
 function clearBill() {
 
-    if (items.length === 0) {
+
+    if (
+        items.length === 0
+    ) {
 
         return;
 
     }
+
 
 
     if (
@@ -712,12 +972,15 @@ function clearBill() {
         )
     ) {
 
+
         items = [];
+
 
 
         document.getElementById(
             "customerName"
         ).value = "";
+
 
 
         displayItems();
@@ -728,18 +991,21 @@ function clearBill() {
 
 
 
-/* ==========================================
+/* =========================================
    LOAD NOTO SANS FONT
-========================================== */
+========================================= */
 
 async function loadNotoSansFont() {
 
+
     try {
+
 
         const response =
             await fetch(
                 "assets/fonts/NotoSans-Regular.ttf"
             );
+
 
 
         if (!response.ok) {
@@ -751,18 +1017,26 @@ async function loadNotoSansFont() {
         }
 
 
+
         const arrayBuffer =
             await response.arrayBuffer();
 
 
+
         const uint8Array =
-            new Uint8Array(arrayBuffer);
+            new Uint8Array(
+                arrayBuffer
+            );
+
 
 
         let binaryString = "";
 
 
-        const chunkSize = 8192;
+
+        const chunkSize =
+            8192;
+
 
 
         for (
@@ -770,6 +1044,7 @@ async function loadNotoSansFont() {
             i < uint8Array.length;
             i += chunkSize
         ) {
+
 
             const chunk =
                 uint8Array.subarray(
@@ -781,18 +1056,23 @@ async function loadNotoSansFont() {
                 );
 
 
-            binaryString += String.fromCharCode(
-                ...chunk
-            );
+
+            binaryString +=
+                String.fromCharCode(
+                    ...chunk
+                );
 
         }
+
 
 
         return binaryString;
 
     }
 
+
     catch (error) {
+
 
         console.error(
             "Font loading error:",
@@ -808,60 +1088,74 @@ async function loadNotoSansFont() {
 
 
 
-/* ==========================================
-   DOWNLOAD BILL
-========================================== */
+/* =========================================
+   DOWNLOAD PDF
+========================================= */
 
 async function downloadBill() {
 
 
-    if (items.length === 0) {
+    if (
+        items.length === 0
+    ) {
+
 
         alert(
             "Please add at least one item before downloading the bill."
         );
+
 
         return;
 
     }
 
 
+
     const customerName =
         document
-            .getElementById("customerName")
+            .getElementById(
+                "customerName"
+            )
             .value
             .trim()
         || "Customer";
 
 
+
     const billDate =
-        document.getElementById(
-            "billDate"
-        ).value;
+        document
+            .getElementById(
+                "billDate"
+            )
+            .value;
+
 
 
     const downloadButton =
-        document.querySelector(
-            'button[onclick="downloadBill()"]'
+        document.getElementById(
+            "downloadButton"
         );
 
 
-    downloadButton.disabled = true;
+
+    downloadButton.disabled =
+        true;
+
 
     downloadButton.innerText =
         "Creating PDF...";
 
 
+
     try {
 
 
-        /* ------------------------------------------
-           Get jsPDF
-        ------------------------------------------ */
+        /* GET jsPDF */
 
         const {
             jsPDF
         } = window.jspdf;
+
 
 
         const doc =
@@ -873,19 +1167,19 @@ async function downloadBill() {
 
 
 
-        /* ------------------------------------------
-           Load Noto Sans
-        ------------------------------------------ */
+        /* LOAD FONT */
 
         const notoSans =
             await loadNotoSansFont();
 
 
+
         if (!notoSans) {
+
 
             alert(
                 "Noto Sans font could not be loaded.\n\n" +
-                "Please make sure this file exists:\n" +
+                "Please check that this file exists:\n" +
                 "fonts/NotoSans-Regular.ttf"
             );
 
@@ -895,9 +1189,8 @@ async function downloadBill() {
         }
 
 
-        /* ------------------------------------------
-           Add Noto Sans to jsPDF
-        ------------------------------------------ */
+
+        /* ADD FONT */
 
         doc.addFileToVFS(
             "NotoSans-Regular.ttf",
@@ -912,19 +1205,14 @@ async function downloadBill() {
         );
 
 
-        /* ------------------------------------------
-           Use Noto Sans
-        ------------------------------------------ */
-
         doc.setFont(
             "NotoSans",
             "normal"
         );
 
 
-        /* ------------------------------------------
-           Page dimensions
-        ------------------------------------------ */
+
+        /* PAGE */
 
         const pageWidth =
             doc.internal.pageSize.getWidth();
@@ -935,9 +1223,9 @@ async function downloadBill() {
 
 
 
-        /* ------------------------------------------
+        /* =====================================
            HEADER
-        ------------------------------------------ */
+        ===================================== */
 
         doc.setFillColor(
             25,
@@ -962,7 +1250,9 @@ async function downloadBill() {
         );
 
 
-        doc.setFontSize(20);
+        doc.setFontSize(
+            20
+        );
 
 
         doc.text(
@@ -975,7 +1265,9 @@ async function downloadBill() {
         );
 
 
-        doc.setFontSize(11);
+        doc.setFontSize(
+            11
+        );
 
 
         doc.text(
@@ -988,7 +1280,9 @@ async function downloadBill() {
         );
 
 
-        doc.setFontSize(9);
+        doc.setFontSize(
+            9
+        );
 
 
         doc.text(
@@ -1001,9 +1295,10 @@ async function downloadBill() {
         );
 
 
-        /* ------------------------------------------
-           RESET TEXT COLOR
-        ------------------------------------------ */
+
+        /* =====================================
+           RESET TEXT
+        ===================================== */
 
         doc.setTextColor(
             0,
@@ -1012,35 +1307,43 @@ async function downloadBill() {
         );
 
 
-        /* ------------------------------------------
-           BILL INFORMATION
-        ------------------------------------------ */
 
-        doc.setFontSize(11);
+        /* =====================================
+           CUSTOMER INFORMATION
+        ===================================== */
 
-
-        doc.text(
-            "Customer: " + customerName,
-            15,
-            55
+        doc.setFontSize(
+            10
         );
 
 
         doc.text(
-            "Date: " + billDate,
+            "Customer: " +
+            customerName,
+            15,
+            54
+        );
+
+
+        doc.text(
+            "Bill Date: " +
+            formatDate(
+                billDate
+            ),
             pageWidth - 15,
-            55,
+            54,
             {
                 align: "right"
             }
         );
 
 
-        /* ------------------------------------------
-           TABLE HEADER
-        ------------------------------------------ */
 
-        let y = 70;
+        /* =====================================
+           TABLE HEADER
+        ===================================== */
+
+        let y = 68;
 
 
         doc.setFillColor(
@@ -1066,11 +1369,13 @@ async function downloadBill() {
         );
 
 
-        doc.setFontSize(10);
+        doc.setFontSize(
+            9
+        );
 
 
         doc.text(
-            "#",
+            "Date",
             20,
             y
         );
@@ -1078,7 +1383,7 @@ async function downloadBill() {
 
         doc.text(
             "Description",
-            35,
+            65,
             y
         );
 
@@ -1093,9 +1398,10 @@ async function downloadBill() {
         );
 
 
-        /* ------------------------------------------
-           TABLE ITEMS
-        ------------------------------------------ */
+
+        /* =====================================
+           ITEMS
+        ===================================== */
 
         y += 12;
 
@@ -1107,108 +1413,174 @@ async function downloadBill() {
         );
 
 
-        doc.setFontSize(10);
-
-
         let total = 0;
 
 
-        items.forEach((item, index) => {
+
+        items.forEach(
+            (item, index) => {
 
 
-            /* New page if needed */
+                /* NEW PAGE */
 
-            if (y > pageHeight - 35) {
-
-                doc.addPage();
-
-                y = 25;
-
-            }
+                if (
+                    y >
+                    pageHeight - 40
+                ) {
 
 
-            /* Alternate row background */
-
-            if (index % 2 === 0) {
-
-                doc.setFillColor(
-                    245,
-                    245,
-                    245
-                );
+                    doc.addPage();
 
 
-                doc.rect(
-                    15,
-                    y - 6,
-                    pageWidth - 30,
-                    9,
-                    "F"
-                );
-
-            }
+                    y = 25;
 
 
-            doc.setTextColor(
-                0,
-                0,
-                0
-            );
+
+                    /* Header on new page */
+
+                    doc.setFillColor(
+                        25,
+                        135,
+                        84
+                    );
 
 
-            doc.text(
-                String(index + 1),
-                20,
-                y
-            );
+                    doc.rect(
+                        0,
+                        0,
+                        pageWidth,
+                        12,
+                        "F"
+                    );
 
 
-            /*
-                Split long descriptions
-                so they don't run outside PDF.
-            */
-
-            const descriptionLines =
-                doc.splitTextToSize(
-                    item.description,
-                    120
-                );
+                    doc.setTextColor(
+                        255,
+                        255,
+                        255
+                    );
 
 
-            doc.text(
-                descriptionLines,
-                35,
-                y
-            );
+                    doc.setFontSize(
+                        9
+                    );
 
 
-            doc.text(
-                "₹" +
-                item.price.toFixed(2),
-                pageWidth - 20,
-                y,
-                {
-                    align: "right"
+                    doc.text(
+                        "The Food Point - Bill",
+                        pageWidth / 2,
+                        8,
+                        {
+                            align: "center"
+                        }
+                    );
+
+
+                    doc.setTextColor(
+                        0,
+                        0,
+                        0
+                    );
+
                 }
-            );
 
 
-            total += item.price;
+
+                /* ALTERNATE ROW */
+
+                if (
+                    index % 2 === 0
+                ) {
 
 
-            y +=
-                Math.max(
-                    9,
-                    descriptionLines.length * 5
+                    doc.setFillColor(
+                        245,
+                        245,
+                        245
+                    );
+
+
+                    doc.rect(
+                        15,
+                        y - 6,
+                        pageWidth - 30,
+                        9,
+                        "F"
+                    );
+
+                }
+
+
+
+                doc.setFontSize(
+                    9
                 );
 
-        });
+
+                /* DATE */
+
+                doc.text(
+                    formatDate(
+                        item.date
+                    ),
+                    20,
+                    y
+                );
 
 
 
-        /* ------------------------------------------
+                /* DESCRIPTION */
+
+                const descriptionLines =
+                    doc.splitTextToSize(
+                        item.description,
+                        95
+                    );
+
+
+                doc.text(
+                    descriptionLines,
+                    65,
+                    y
+                );
+
+
+
+                /* PRICE */
+
+                doc.text(
+                    "₹" +
+                    item.price.toFixed(
+                        2
+                    ),
+                    pageWidth - 20,
+                    y,
+                    {
+                        align: "right"
+                    }
+                );
+
+
+
+                total +=
+                    item.price;
+
+
+
+                y +=
+                    Math.max(
+                        9,
+                        descriptionLines.length * 5
+                    );
+
+            }
+        );
+
+
+
+        /* =====================================
            TOTAL
-        ------------------------------------------ */
+        ===================================== */
 
         y += 5;
 
@@ -1231,7 +1603,9 @@ async function downloadBill() {
         y += 12;
 
 
-        doc.setFontSize(14);
+        doc.setFontSize(
+            14
+        );
 
 
         doc.text(
@@ -1242,7 +1616,10 @@ async function downloadBill() {
 
 
         doc.text(
-            "₹" + total.toFixed(2),
+            "₹" +
+            total.toFixed(
+                2
+            ),
             pageWidth - 20,
             y,
             {
@@ -1252,14 +1629,16 @@ async function downloadBill() {
 
 
 
-        /* ------------------------------------------
-           THANK YOU MESSAGE
-        ------------------------------------------ */
+        /* =====================================
+           THANK YOU
+        ===================================== */
 
         y += 20;
 
 
-        doc.setFontSize(10);
+        doc.setFontSize(
+            10
+        );
 
 
         doc.text(
@@ -1276,7 +1655,7 @@ async function downloadBill() {
 
 
         doc.text(
-            "We appreciate your business.",
+            "We look forward to serving you again.",
             pageWidth / 2,
             y,
             {
@@ -1286,11 +1665,13 @@ async function downloadBill() {
 
 
 
-        /* ------------------------------------------
+        /* =====================================
            FOOTER
-        ------------------------------------------ */
+        ===================================== */
 
-        doc.setFontSize(8);
+        doc.setFontSize(
+            8
+        );
 
 
         doc.setTextColor(
@@ -1311,18 +1692,17 @@ async function downloadBill() {
 
 
 
-        /* ------------------------------------------
-           SAVE PDF
-        ------------------------------------------ */
+        /* SAVE */
 
         doc.save(
             "The-Food-Point-Bill.pdf"
         );
 
-
     }
 
+
     catch (error) {
+
 
         console.error(
             "PDF generation error:",
@@ -1332,14 +1712,18 @@ async function downloadBill() {
 
         alert(
             "There was an error creating the PDF.\n\n" +
-            "Please check that NotoSans-Regular.ttf exists inside the fonts folder."
+            "Please make sure NotoSans-Regular.ttf is inside the fonts folder."
         );
 
     }
 
+
     finally {
 
-        downloadButton.disabled = false;
+
+        downloadButton.disabled =
+            false;
+
 
         downloadButton.innerText =
             "⬇ Download Bill";
@@ -1349,41 +1733,82 @@ async function downloadBill() {
 }
 
 
-function copyBill() {
 
-    if (items.length === 0) {
+/* =========================================
+   COPY BILL FOR WHATSAPP
+========================================= */
 
-        alert("Please add at least one item before copying the bill.");
+async function copyBill() {
+
+
+    if (
+        items.length === 0
+    ) {
+
+
+        alert(
+            "Please add at least one item before copying the bill."
+        );
+
 
         return;
 
     }
 
 
+
     const customerName =
-        document.getElementById("customerName").value.trim()
+        document
+            .getElementById(
+                "customerName"
+            )
+            .value
+            .trim()
         || "Customer";
 
 
+
     const billDate =
-        document.getElementById("billDate").value;
+        document
+            .getElementById(
+                "billDate"
+            )
+            .value;
+
 
 
     let total = 0;
 
 
+
     let billText =
-        "THE FOOD POINT\n" +
-        "Daily Food & Meal Packages\n" +
-        "FSSAI Approved | License No: 20824005002667\n\n";
+        "THE FOOD POINT\n";
 
 
     billText +=
-        "Customer: " + customerName + "\n";
+        "Daily Food & Meal Packages\n";
 
 
     billText +=
-        "Date: " + billDate + "\n\n";
+        "FSSAI Approved | License No: 20824005002667\n";
+
+
+    billText +=
+        "================================\n\n";
+
+
+    billText +=
+        "Customer: " +
+        customerName +
+        "\n";
+
+
+    billText +=
+        "Bill Date: " +
+        formatDate(
+            billDate
+        ) +
+        "\n\n";
 
 
     billText +=
@@ -1391,32 +1816,46 @@ function copyBill() {
 
 
     billText +=
-        "------------------------------\n";
+        "================================\n";
 
 
-    items.forEach((item, index) => {
 
-        billText +=
-            (index + 1) +
-            ". " +
-            item.description +
-            " - ₹" +
-            item.price.toFixed(2) +
-            "\n";
+    items.forEach(
+        (item, index) => {
 
 
-        total += item.price;
+            billText +=
+                (index + 1) +
+                ". " +
+                formatDate(
+                    item.date
+                ) +
+                " - " +
+                item.description +
+                " - ₹" +
+                item.price.toFixed(
+                    2
+                ) +
+                "\n";
 
-    });
+
+            total +=
+                item.price;
+
+        }
+    );
+
 
 
     billText +=
-        "------------------------------\n";
+        "================================\n";
 
 
     billText +=
         "TOTAL: ₹" +
-        total.toFixed(2) +
+        total.toFixed(
+            2
+        ) +
         "\n\n";
 
 
@@ -1425,35 +1864,68 @@ function copyBill() {
 
 
     billText +=
-        "We appreciate your business.";
+        "We look forward to serving you again.";
 
 
-    navigator.clipboard.writeText(billText)
-        .then(() => {
 
-            alert(
-                "Bill copied successfully! You can now paste it into WhatsApp."
+    try {
+
+
+        await navigator.clipboard.writeText(
+            billText
+        );
+
+
+
+        const copyButton =
+            document.getElementById(
+                "copyButton"
             );
 
-        })
-        .catch((error) => {
 
-            console.error(
-                "Copy failed:",
-                error
-            );
+        const originalText =
+            copyButton.innerText;
 
 
-            alert(
-                "Unable to copy the bill. Please try again."
-            );
+        copyButton.innerText =
+            "✓ Copied!";
 
-        });
+
+        setTimeout(
+            () => {
+
+                copyButton.innerText =
+                    originalText;
+
+            },
+            2000
+        );
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(
+            "Copy failed:",
+            error
+        );
+
+
+        alert(
+            "Unable to copy the bill. Please try again."
+        );
+
+    }
 
 }
-/* ==========================================
+
+
+
+/* =========================================
    INITIAL DISPLAY
-========================================== */
+========================================= */
 
 displayItems();
 
@@ -1463,4 +1935,4 @@ displayItems();
 </body>
 
 </html>
-
+```
